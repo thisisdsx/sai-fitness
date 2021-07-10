@@ -57,6 +57,7 @@ $img_size=$_POST['img_size'];
 $tmp_name=$_POST['tmp_name'];
 $error=$_POST['error'];
 $new_img_name = $_POST['new_img_name'];
+$valid_upto = $_POST['valid_upto'];
 
 $conn=mysqli_connect($server,$user,$password,$dbname);
 
@@ -113,6 +114,10 @@ else{
                                     <input type="hidden" name="Address1" value="<?php echo "$Address1" ?>">
                                     <input type="hidden" name="Address2" value="<?php echo "$Address2" ?>">
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Valid Upto</td>
+                                <td><?php echo "$valid_upto" ?></td>
                             </tr>
                             <tr>
                                 <td> <label class="lbl" style="color:red;">Amount (in ₹) </label></td>

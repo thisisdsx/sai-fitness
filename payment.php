@@ -77,6 +77,7 @@
         <!--Side Section ends-->
         <br /><br /><br /><br /><br />
     <?php
+
         if(isset($_POST['submit']))
         {
             $price = $_POST['price'];
@@ -86,6 +87,7 @@
             $Mobile = $_POST['Mobile'];
             $Address1 = $_POST['Address1'];
             $Address2 = $_POST['Address2'];
+            
 
             if(isset($_POST['submit']) && isset($_FILES['FileUpload'])){
                 $img_name = $_FILES['FileUpload']['name'];
@@ -118,6 +120,19 @@
                 }
             }
         }
+        if($price=="410"){
+            $mnths="1 month";
+        }
+        elseif($price=="800"){
+            $mnths="3 months";
+        }
+        elseif($price=="1200"){
+            $mnths="6 months";
+        }
+        else{
+            $mnths="12 months";
+        }
+        $valid_upto=date('d/m/Y', strtotime($mnths));
     ?>
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -159,6 +174,10 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>Valid Upto:</td>
+                                <td><label class="lbl" name="mnths" style="color:blue"><?php echo "$valid_upto" ?></label></td>
+                            </tr>
+                            <tr>
                                 <td><input type="button" id="prceed" class="btn-success" onclick="showwhide(this)" value="show" style="border-radius:5px;padding:7px;"></input></td>
                                 <td><button class="btn-danger" style="border-radius:5px;padding:7px;"><a style="color:white" href="index.html">Cancel</a></button></td>
                             </tr>
@@ -189,6 +208,7 @@
                 <input type="hidden" name="img_size" value="<?php echo "$img_size" ?>">
                 <input type="hidden" name="tmp_name" value="<?php echo "$tmp_name" ?>">
                 <input type="hidden" name="error" value="<?php echo "$error" ?>">
+                <input type="hidden" name="valid_upto" value="<?php echo "$valid_upto" ?>">
                 <input type="hidden" name="new_img_name" value="<?php echo "$new_img_name" ?>"><br />
             <div class="row justify-content-center">
             <button name="submit" type="submit" class="btn btn-success">Proceed</button>
